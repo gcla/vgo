@@ -150,12 +150,14 @@ func (f *File) add(errs *bytes.Buffer, line *Line, verb string, args []string, f
 		}
 		v1, err := moduleMajorVersion(s)
 		if err != nil {
-			fmt.Fprintf(errs, "%s:%d: %v\n", f.Syntax.Name, line.Start.Line, err)
-			return
+			// gcla
+			//fmt.Fprintf(errs, "%s:%d: %v\n", f.Syntax.Name, line.Start.Line, err)
+			//return
 		}
 		if v2 := semver.Major(v); v1 != v2 && (v1 != "v1" || v2 != "v0") {
-			fmt.Fprintf(errs, "%s:%d: invalid module: %s should be %s, not %s (%s)\n", f.Syntax.Name, line.Start.Line, s, v1, v2, v)
-			return
+			// gcla
+			//fmt.Fprintf(errs, "%s:%d: invalid module: %s should be %s, not %s (%s)\n", f.Syntax.Name, line.Start.Line, s, v1, v2, v)
+			//return
 		}
 		if verb == "require" {
 			f.Require = append(f.Require, &Require{
